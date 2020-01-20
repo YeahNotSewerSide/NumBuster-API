@@ -1,7 +1,7 @@
 # NumBuster-API
-# Thats fully reversed NumBuster app for android, and rewrited all requests for numbusters api in python.
+# So.. I fully reversed NumBuster app for android, and rewrited all requests for numbusters api in python.
 
-# For working with that api you need access_token, there are 2 ways of getting it:
+# For working with that api you need access_token, there are 2 ways of getting it
 
 # First way(PLS USE THAT):
   	Download NumBuster!_6.0.6.apk - I hope you can find it by yourself
