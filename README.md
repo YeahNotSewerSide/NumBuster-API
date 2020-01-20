@@ -1,7 +1,7 @@
 # NumBuster-API
 # Thats fully reversed NumBuster app for android, and rewrited all requests for numbusters api in python.
 
-For working with that api you need access_token, there are 2 ways of getting it:
+#For working with that api you need access_token, there are 2 ways of getting it:
 
 # First way(PLS USE THAT):
   Download NumBuster!_6.0.6.apk - I hope you can find it by yourself
@@ -28,3 +28,7 @@ For working with that api you need access_token, there are 2 ways of getting it:
   
 # Second way:
   I have implemented all api requests in that api, so just find functions for registration use them and maybe you will get          	access_token, but really, use first way. There is little help: most of functions for registration start with v6_auth, Good Luck!
+  
+  
+# Now lets talk about api:
+	Main api file with all api functions is NumbusterAPI.py, in file signatures.py functions for creating signaturs for different requests.
