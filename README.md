@@ -27,4 +27,4 @@ For working with that api you need access_token, there are 2 ways of getting it:
   In the https://api.numbuster.com/ menu look for that v6/old/search/ and in the parameters you will find your access_token
   
 # Second way:
-  I have implemented all api requests in that api, so just find functions for registration use them and maybe you will get          	access_token, but really, use ferst way. There is little help: most of functions for registration start with v6_auth, Good Luck!
+  I have implemented all api requests in that api, so just find functions for registration use them and maybe you will get          	access_token, but really, use first way. There is little help: most of functions for registration start with v6_auth, Good Luck!
