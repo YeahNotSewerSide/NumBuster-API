@@ -18,7 +18,7 @@ For working with that api you need access_token, there are 2 ways of getting it:
 	
   Then press button start instrumentation and go to emulator, wait for numbuster to load.
 	
-  Then register new account and check any number in app(Numbuster)
+  Then register new account and check any number in app(Numbuster) / or use alreay created account, for that just register new account for the same phone number, bdw you can use free online numbers, but tss....
 	
   After that, go to MobSF and press button Generate Report
 	
