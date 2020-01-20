@@ -32,3 +32,5 @@
   
 # Now lets talk about api:
 	Main api file with all api functions is NumbusterAPI.py, in file signatures.py functions for creating signaturs for different requests.
+	
+	And yes, user have only 30 free requests per day, with that function: v6_old_phone you have unlimited free requests.
