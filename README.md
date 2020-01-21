@@ -1,4 +1,4 @@
-# NumBuster-API
+# NumBuster API
 # So.. I fully reversed NumBuster app for android, and rewrited all requests for numbusters api in python.
 
 # For working with that api you need access_token, there are 2 ways of getting it
