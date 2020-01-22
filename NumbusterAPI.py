@@ -1,6 +1,8 @@
 import requests
 import signatures
 
+#all numbers must be like: 79xxxxxxxxx,
+#number must starts with the code of the country
 
 class Numbuster:
     def __init__(self,access_token):
