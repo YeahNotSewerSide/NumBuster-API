@@ -10,7 +10,7 @@ def get_cnonce() -> str:
         buf = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'   
         cnonce = ''
         length = random.randint(0,19) + 30
-        for i in range(50):
+        for i in range(length):
             cnonce += random.choice(buf)
     else:
         cnonce = 'o5oorrrlBlbWKHRVuH7lBQdVCQEVKeXeTkAyA9H6FY8DT904sq'
