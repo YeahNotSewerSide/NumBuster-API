@@ -18,8 +18,8 @@ def get_cnonce() -> str:
     return cnonce
 
 def crypt(inp:str):
-    #sha256 alg + sol
-    sol = '0woz2wTimes9izs0vFQjLmwqqSzAPNFtmWNcbOL6xJva5Molyb'#Fucking sol
+    #sha256 alg + sol(salt)
+    sol = '0woz2wTimes9izs0vFQjLmwqqSzAPNFtmWNcbOL6xJva5Molyb'#Fucking sol(salt)
     return hashlib.sha256(bytes(inp+sol,'utf-8')).hexdigest()
 
 def get_timestamp()->str:
