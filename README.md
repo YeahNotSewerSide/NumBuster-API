@@ -3,7 +3,7 @@
 
 # For working with that api you need access_token, there are 2 ways of getting it
 
-# First way(PLS USE THAT):
+# First way(Not so easy):
   	Download NumBuster!_6.0.6.apk - I hope you can find it by yourself
 	
 	Download Genymotion and install Google Pixel 7.1 - API 25 in Genymotion  (Thats the easiest step, so...)
@@ -28,12 +28,13 @@
   	In the https://api.numbuster.com/ menu look for that v6/old/search/ and in the parameters you will find your 
 	access_token
   
-# Second way:
-  	I have implemented all api requests in that api, so just find functions for registration use them and maybe you will get        
-	access_token, but really, use first way. There is little help: most of functions for registration start with v6_auth 	
-	and, another_ 
-	Good Luck!
-  
+# Second way (Why that's not the First way? BECAUSE):
+  	So, First of all call function request_sms_code() with number for account
+	Second, wait for sms, then call send_sms_code(phonenumber,code), 
+	where phonenumber is phonenumber and, you won't believe, code is code,
+	after that api will get access_token Numbuster.access_token and you'l
+	be able to use all functionality of api. DON'T FORGET TO SAVE ACCESS_TOKEN,
+	I won't do it for you, I'm not your mom or something...
   
 # Now lets talk about api:
 	Main api file with all api functions is NumbusterAPI.py, in file signatures.py functions for creating signaturs for 
