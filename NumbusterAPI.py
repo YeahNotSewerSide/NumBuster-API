@@ -231,7 +231,6 @@ class Numbuster:
         headers = self.headers.copy()
         headers['Content-Type'] = 'application/x-www-form-urlencoded'
         url = self.api_url+f'old4a27f7a4025447ee5560a49bc5bcde34/profiles'
-        data = requests.post(url,headers=self.headers)
         data = requests.post(url,headers=headers,data=bytes(f'phone={phone}','utf-8'))
         return data.json()
 
