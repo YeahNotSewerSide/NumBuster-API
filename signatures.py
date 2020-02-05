@@ -4,16 +4,23 @@ import time
 import urllib
 
 RANDOMISE_CNONCE = True
+ 
+
+def actual_cnonce():
+    buf = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'   
+    cnonce = ''
+    length = random.randint(0,19) + 30
+    for i in range(length):
+        cnonce += random.choice(buf)
+    return cnonce
+
+DEFAULT_CNONCE = actual_cnonce()
 
 def get_cnonce() -> str:
     if RANDOMISE_CNONCE:
-        buf = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'   
-        cnonce = ''
-        length = random.randint(0,19) + 30
-        for i in range(length):
-            cnonce += random.choice(buf)
+        cnonce = actual_cnonce()
     else:
-        cnonce = 'o5oorrrlBlbWKHRVuH7lBQdVCQEVKeXeTkAyA9H6FY8DT904sq'
+        cnonce = DEFAULT_CNONCE
 
     return cnonce
 
