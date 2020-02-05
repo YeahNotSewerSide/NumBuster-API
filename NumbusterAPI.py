@@ -277,7 +277,7 @@ class Numbuster:
     def request_sms_code(self,phonenumber:str):
         code = self.v6_auth_get()['data']['code']
         self.v6_auth_agreement_code(code)
-        self.another_profiles_without_code(phonenumber) #Can be deleted, but meh...
+        self.another_profiles_without_code(phonenumber)
         self.another_profiles(phonenumber) #Can be deleted, but meh...
 
     def send_sms_code(self,phonenumber:str,code:str):
