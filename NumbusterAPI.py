@@ -275,10 +275,10 @@ class Numbuster:
        return data.json()
 
     def request_sms_code(self,phonenumber:str):
-        code = self.v6_auth_get()['data']['code'] 
-        self.v6_auth_agreement_code(code) 
+        code = self.v6_auth_get()['data']['code'] #Can be deleted
+        self.v6_auth_agreement_code(code) #Can be deleted
         self.another_profiles_without_code(phonenumber)
-        self.another_profiles(phonenumber) #Can be deleted, but meh...
+        self.another_profiles(phonenumber) #Can be deleted
 
     def send_sms_code(self,phonenumber:str,code:str):
         self.access_token = api.another_profiles_confirm(phonenumber,code)['access_token']
