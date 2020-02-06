@@ -4,29 +4,22 @@ import time
 import urllib
 
 RANDOMISE_CNONCE = True
- 
-
-def actual_cnonce():
-    buf = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'   
-    cnonce = ''
-    length = random.randint(0,19) + 30
-    for i in range(length):
-        cnonce += random.choice(buf)
-    return cnonce
-
-DEFAULT_CNONCE = actual_cnonce()
 
 def get_cnonce() -> str:
     if RANDOMISE_CNONCE:
-        cnonce = actual_cnonce()
+        buf = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'   
+        cnonce = ''
+        length = random.randint(0,19) + 30
+        for i in range(50):
+            cnonce += random.choice(buf)
     else:
-        cnonce = DEFAULT_CNONCE
+        cnonce = 'o5oorrrlBlbWKHRVuH7lBQdVCQEVKeXeTkAyA9H6FY8DT904sq'
 
     return cnonce
 
 def crypt(inp:str):
-    #sha256 alg + sol(salt)
-    sol = '0woz2wTimes9izs0vFQjLmwqqSzAPNFtmWNcbOL6xJva5Molyb'#Fucking sol(salt)
+    #sha256 alg + sol
+    sol = '0woz2wTimes9izs0vFQjLmwqqSzAPNFtmWNcbOL6xJva5Molyb'#Fucking sol
     return hashlib.sha256(bytes(inp+sol,'utf-8')).hexdigest()
 
 def get_timestamp()->str:
@@ -139,4 +132,12 @@ def signature_v6_numcy_subscription_comment_cancel(access_token:str,cnonce:str,c
 def signature_v6_numcy_subscription_comment_settings(access_token:str,cnonce:str,timestamp:str):
     source = 'GETapi.numbuster.com/api/v6/numcy/subscription/comment/settingsaccess_token='+access_token+'&cnonce='+cnonce+'&timestamp='+timestamp
     return crypt(source)
+
+def signature_v6_auth_precheck(cnonce:str,code:str,phone:str,timestamp:str):
+    source = 'POSTapi.numbuster.com/api/v6/auth/precheckcnonce='+cnonce+'&code='+code+'&phone='+phone+'&timestamp='+timestamp
+    return crypt(source)
+
+
+if __name__=='__main__':
+    print(signature_v6_auth_precheck('7BRIqhAJIIwiRWoY2OBILW2s8HT8emI','Cztm-XkwS-tk7l','79313336429','1580923704'))
 
