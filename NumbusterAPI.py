@@ -263,11 +263,19 @@ class Numbuster:
         data = requests.post(url,headers=headers,data=bytes(f'phone={phone}','utf-8'))
         return data.json()
     
-    def another_ping(self,device_build='9b1ef3ef32be6596',device_imei='000000000000000',device_os='Android',deviceToken='0',device_locale='en_US',device_version='60600'):
-        dt = f'device%5Buid%5D={device_build}&device%5Bimei%5D={device_build}&device%5Bos%5D={device_os}&device%5BdeviceToken%5D={deviceToken}&device%5Blocale%5D={device_locale}&device%5Bversion%5D={device_version}'
+    def another_ping(self,device_uid='ca971311-cdc0-4662-98ac-e301c9ddf0a1',device_imei='200856862726018',device_os='Android',device_token='0',locale='en_US',device_version='60800'):
+        dt = f'device%5uid%5D={device_uid}&device%5Bimei%5D={device_imei}&device%5Bos%5D={device_os}&device%5BdeviceToken%5D={device_token}&device%5Blocale%5D={locale}&device%5Bversion%5D={device_version}'
         headers = self.headers.copy()
         headers['Content-Type'] = 'application/x-www-form-urlencoded'
         url = self.api_url+f'old4a27f7a4025447ee5560a49bc5bcde34/ping?access_token={self.access_token}'
+        data = requests.post(url,headers=headers,data=bytes(dt,'utf-8'))
+        return data.json()
+
+    def another_profiles_callme(self,phone:str,device_uid='ca971311-cdc0-4662-98ac-e301c9ddf0a1',device_imei='200856862726018',device_os='Android',device_token='0',locale='en_US',device_version='60800'):
+        dt = f'phone={phone}&device%5uid%5D={device_uid}&device%5Bimei%5D={device_imei}&device%5Bos%5D={device_os}&device%5BdeviceToken%5D={device_token}&device%5Blocale%5D={locale}&device%5Bversion%5D={device_version}'
+        url = self.api_url+f'old4a27f7a4025447ee5560a49bc5bcde34/profiles/callme'
+        headers = self.headers.copy()
+        headers['Content-Type'] = 'application/x-www-form-urlencoded'
         data = requests.post(url,headers=headers,data=bytes(dt,'utf-8'))
         return data.json()
 
@@ -286,18 +294,19 @@ class Numbuster:
         return data.json()
 
     def request_sms_code(self,phonenumber:str):
-        code = self.v6_auth_get(platform='iOS')['data']['code']        
-        self.v6_auth_agreement_code(code)               
-        self.v6_auth_precheck(code,phonenumber)
+        self.another_ping()
+        code = self.v6_auth_get()['data']['code']       
+        self.v6_auth_agreement_code(code)  
+        self.v6_auth_precheck(code,phonenumber)       
         self.another_profiles_without_code(phonenumber)        
-        self.another_profiles(phonenumber) #Can be deleted, but meh...
+        self.another_profiles(phonenumber)
         
 
     def send_sms_code(self,phonenumber:str,code:str):
         
         self.access_token = api.another_profiles_confirm(phonenumber,code)['access_token']
         self.another_ping()
-        self.v2_ping()
+        #self.v2_ping()
         self.v6_auth_agreement(phonenumber)
         self.v2_contacts_sync()
 
@@ -306,10 +315,12 @@ class Numbuster:
 
 if __name__ == '__main__':
     
-    api = Numbuster('')
-    api.request_sms_code('')
+    api = Numbuster('4ksbhyzqvncw4408cksc048ggwoc8gw4cw0coc484skcsko8wc')
+    #for i in range(5):
+    api.request_sms_code('79219511844')
+        
     code = input('Code: ')
-    api.send_sms_code('',code)
+    api.send_sms_code('79219511844',code)
     print(api.access_token)
     print(api.v6_old_phone('79202600211'))
    
