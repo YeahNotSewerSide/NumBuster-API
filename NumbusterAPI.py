@@ -6,7 +6,7 @@ requests.adapters.DEFAULT_RETRIES = 500
 class Numbuster:
     def __init__(self,access_token=None):
         self.access_token = access_token
-        self.api_url = 'http://apikz2.nmb.st/api'
+        self.api_url = 'http://apikz2.nmb.st/api/'
         self.headers = {'Host': 'apikz2.nmb.st',
                     'User-Agent': 'okhttp/3.12.1',
                     'Accept-Encoding': 'gzip',
@@ -291,6 +291,14 @@ class Numbuster:
         headers['Content-Type'] = 'application/json; charset=UTF-8'
         url = self.api_url+f'v2/contacts/sync?access_token={self.access_token}'
         data = requests.post(url,headers=headers,data='[]')
+        return data.json()
+
+    def v7_main_load(self):
+        timestamp = signatures.get_timestamp()
+        cnonce = signatures.get_cnonce()
+        signature = signatures.signature_v7_main_load(self.access_token,cnonce,timestamp)
+        url = self.api_url+f'v7/main/load?access_token={self.access_token}&cnonce={cnonce}&timestamp={timestamp}&signature={signature}'
+        data = requests.get(url,headers=self.headers)
         return data.json()
 
     def request_sms_code(self,phonenumber:str):
