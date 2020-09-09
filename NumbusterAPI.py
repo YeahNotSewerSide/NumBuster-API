@@ -6,7 +6,7 @@ requests.adapters.DEFAULT_RETRIES = 500
 class Numbuster:
     def __init__(self,access_token=None):
         self.access_token = access_token
-        self.api_url = 'http://apikz2.nmb.st/api/'
+        self.api_url = 'http://apikz2.nmb.st/api'
         self.headers = {'Host': 'apikz2.nmb.st',
                     'User-Agent': 'okhttp/3.12.1',
                     'Accept-Encoding': 'gzip',
