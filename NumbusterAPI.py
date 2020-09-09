@@ -6,9 +6,9 @@ requests.adapters.DEFAULT_RETRIES = 500
 class Numbuster:
     def __init__(self,access_token=None):
         self.access_token = access_token
-        self.api_url = 'http://apikz2.nmb.st/api'
-        self.headers = {'Host': 'apikz2.nmb.st',
-                    'User-Agent': 'okhttp/3.12.1',
+        self.api_url = 'https://api.numbuster.com/api/'
+        self.headers = {'Host': 'api.numbuster.com',
+                    'User-Agent': 'okhttp/3.12.1',#'okhttp/3.12.1',
                     'Accept-Encoding': 'gzip',
                     'Connection': 'keep-alive'}
 
@@ -73,13 +73,14 @@ class Numbuster:
         data = requests.post(url,headers=self.headers)
         return data.json()
 
-    def v6_auth_get(self,platform='Android',lang='ru'):
+    def v6_auth_get(self,platform='Android',lang='en'):
         #Allows to get misterious code
         timestamp = signatures.get_timestamp()
         cnonce = signatures.get_cnonce()
         signature = signatures.signature_v6_auth_get(cnonce,timestamp,lang,platform)
         url = self.api_url+f'v6/auth/get?platform={platform}&lang={lang}&timestamp={timestamp}&signature={signature}&cnonce={cnonce}'
         data = requests.get(url,headers=self.headers)
+        
         return data.json()
     
     def v6_auth_precheck(self,code:str,phone:str):
@@ -302,8 +303,8 @@ class Numbuster:
         return data.json()
 
     def request_sms_code(self,phonenumber:str):
-        self.another_ping()
-        self.v2_ping()
+        #self.another_ping()
+        #self.v2_ping()
         data = api.another_profiles(phonenumber)
         code = self.v6_auth_get()['data']['code']       
         self.v6_auth_agreement_code(code)  
