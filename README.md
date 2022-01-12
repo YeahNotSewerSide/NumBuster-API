@@ -1,4 +1,5 @@
 # NumBuster API
+
 # So.. I fully reversed NumBuster app for android, and rewrited all requests for numbusters api in python.
 
 # For working with that api you need access_token, there are 2 ways of getting it, choose one, which works for you.
@@ -42,3 +43,5 @@
 	
 	And yes, user has only 30 free requests per day for that function: v6_old_search,
 	BUT with that function: v6_old_phone you have unlimited free requests.
+
+        Also be aware, that numbuster has "shadow limit" on their servers, if you make to many requests you will start getting random info from server.
