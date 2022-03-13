@@ -45,3 +45,6 @@
 	BUT with that function: v6_old_phone you have unlimited free requests.
 
         Also be aware, that numbuster has "shadow limit" on their servers, if you make to many requests you will start getting random info from server.
+
+More about random data:
+https://github.com/DoctorEenot/NumBuster-API/issues/13#issuecomment-903128499
